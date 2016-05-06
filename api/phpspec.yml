@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: LineXTI
+        psr4_prefix: LineXTI
+        src_path: app
