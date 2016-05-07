@@ -45,4 +45,22 @@ class Core
         return $ativate;
     }
 
+    /**
+     * @param $status
+     */
+    public static function renderStatus($status)
+    {
+        switch ($status) {
+            case '1':
+                return '<label class="label label-primary">Solicitado</label>';
+                break;
+            case '2':
+                return '<label class="label label-warning">Em transito</label>';
+                break;
+            case '3':
+                return '<label class="label label-success">Entregue</label>';
+                break;
+        }
+    }
+
 }

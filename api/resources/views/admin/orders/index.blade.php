@@ -30,9 +30,10 @@
                                         <td class="v-align-middle semi-bold">{{ $order->client->name }}</td>
                                         <td class="v-align-middle semi-bold">{{ $order->deliveryman->name }}</td>
                                         <td class="v-align-middle">{{ $order->total }}</td>
-                                        <td class="v-align-middle semi-bold">{{ $order->status }}</td>
+                                        <td class="v-align-middle semi-bold">{!! \LineXTI\Helpers\Core::renderStatus($order->status) !!}</td>
                                         <td class="v-align-middle text-center">
                                             <a href="{{ route('admin.orders.items', ['id' => base64_encode($order->id)]) }}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add Items</a>
+                                            <a href="{{ route('admin.orders.edit', ['id' => base64_encode($order->id)]) }}" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> Editar</a>
                                             <a href="{{ route('admin.orders.destroy', ['id' => base64_encode($order->id)]) }}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> Apagar</a>
                                         </td>
                                     </tr>

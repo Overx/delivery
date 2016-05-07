@@ -142,7 +142,17 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = base64_decode($id);
+
+        $order = $this->orders->find($id);
+        $deliveryman = User::where('role', 'deliveryman')->lists('name', 'id')->toArray();
+        $users = User::lists('name', 'id')->toArray();
+        $data = [
+            'order' => $order,
+            'deliveryman' => $deliveryman,
+            'users' => $users
+        ];
+        return view('admin.orders.edit', $data);
     }
 
     /**
@@ -154,7 +164,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id = base64_decode($id);
+        $orders = $this->orders->find($id);
+
+        $orders->update($request->all()); // Salva dados do relacionamento
+
+        return redirect()->back()->with('status', 'Pedido Atualizado com sucesso!');
     }
 
     /**
